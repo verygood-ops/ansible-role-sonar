@@ -1,7 +1,6 @@
 ---
 dependencies:
-  - geerlingguy.java
-  - geerlingguy.mysql
+  - smola.java
 
 galaxy_info:
   author: geerlingguy
