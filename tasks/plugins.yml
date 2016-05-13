@@ -1,0 +1,7 @@
+---
+- name: Install Sonarqube plugins
+  get_url:
+    url={{ item.url }}
+    dest=/usr/local/sonar/extensions/plugins
+  notify: restart sonar
+  with_items: "{{ sonar_plugins }}"

@@ -13,6 +13,14 @@ sonar_db_host: localhost
 sonar_db_port: "3306"
 sonar_db_name: sonarqube
 
+sonar_plugins:
+  - name: "github"
+    url: "https://sonarsource.bintray.com/Distribution/sonar-github-plugin/sonar-github-plugin-1.2.jar"
+
+sonar_required_packages:
+  - unzip
+  - maven
+
 sonar_mysql_allowed_hosts:
   - "127.0.0.1"
   - "::1"
