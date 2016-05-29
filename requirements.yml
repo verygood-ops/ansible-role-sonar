@@ -1,0 +1,4 @@
+---
+  - src: git+git@github.com:smola/ansible-java-role.git
+    name: smola.java
+    version: b798df72a7476e5ccbdcc2c1153a45eb70e7cbea
