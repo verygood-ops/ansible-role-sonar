@@ -2,13 +2,13 @@
 - name: Configure SonarQube JDBC settings
   lineinfile:
     dest: /usr/local/sonar/conf/sonar.properties
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
+    regexp: '{{ item.regexp }}'
+    line: '{{ item.line }}'
   notify: restart sonar
   with_items:
-    - regexp: "^sonar.jdbc.username"
-      line: "sonar.jdbc.username={{ sonar_db_username }}"
-    - regexp: "^sonar.jdbc.password"
-      line: "sonar.jdbc.password={{ sonar_db_password }}"
-    - regexp: "^sonar.jdbc.url"
-      line: "sonar.jdbc.url=jdbc:{{ sonar_db_type }}://{{ sonar_db_host }}:{{ sonar_db_port }}/{{ sonar_db_name }}"
+    - regexp: '^sonar.jdbc.username'
+      line: 'sonar.jdbc.username={{ sonar_db_username }}'
+    - regexp: '^sonar.jdbc.password'
+      line: 'sonar.jdbc.password={{ sonar_db_password }}'
+    - regexp: '^sonar.jdbc.url'
+      line: 'sonar.jdbc.url=jdbc:{{ sonar_db_type }}://{{ sonar_db_host }}:{{ sonar_db_port }}/{{ sonar_db_name }}'
