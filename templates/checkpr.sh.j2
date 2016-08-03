@@ -1,0 +1,53 @@
+#!/bin/bash
+
+cd "${BASH_SOURCE%/*}" || exit
+
+# REPOS="verygoodgroup/litle-client verygoodgroup/skrill-client"
+# SONAR_URL="https://sonarqube-staging.finix.io"
+# GITHUB_LOGIN="--hidden--"
+# SONAR_LOGIN="--hidden--"
+
+REPO="{{sonar_repositories}}"
+GITHUB_LOGIN="{{sonar_github_token}}"
+SONAR_LOGIN="{{sonar_token}}"
+SONAR_URL="{{sonar_url}}"
+
+ROOT_DIR=$PWD
+
+for REPO in ${REPOS}
+do
+  OIFS=$IFS
+  IFS=/
+  set -- ${REPO}
+  REPO_US=$1
+  REPO_NAME=$2
+  IFS=${OIFS}
+
+  for PRNUM in $(curl -ss  -H "Authorization: token ${GITHUB_LOGIN}" https://api.github.com/repos/${REPO_US}/${REPO_NAME}/pulls | grep '"number"' | sed 's/.$//' | awk '{print $2}' | sort -n)
+  do
+    cd ${ROOT_DIR}
+    mkdir -p repositories
+    cd repositories
+    echo "working git@github.com:${REPO_US}/${REPO_NAME}/pull/${PRNUM}"
+
+    if test -d ${REPO_NAME}
+    then
+      cd ${REPO_NAME} && git pull
+    else
+      git clone https://${GITHUB_LOGIN}:@github.com/${REPO_US}/${REPO_NAME} && cd ${REPO_NAME}
+    fi
+
+    git fetch origin pull/${PRNUM}/head:pr-${PRNUM} && git checkout pr-${PRNUM}
+
+    mvn sonar:sonar \
+      -Dsonar.analysis.mode=preview \
+      -Dsonar.github.oauth=${GITHUB_LOGIN} \
+      -Dsonar.github.repository=${REPO_US}/${REPO_NAME} \
+      -Dsonar.github.pullRequest=${PRNUM} \
+      -Dsonar.login=${SONAR_LOGIN} \
+      -Dsonar.host.url=${SONAR_URL}
+
+    git checkout master
+    git branch -D pr-${PRNUM}
+  done
+done

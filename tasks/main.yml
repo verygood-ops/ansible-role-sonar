@@ -8,11 +8,11 @@
 - name: Download Sonar
   get_url:
     url: '{{ sonar_download_url }}'
-    dest: '{{ workspace }}/{{ sonar_version_directory }}.zip'
+    dest: '{{ sonar_workspace }}/{{ sonar_version_directory }}.zip'
 
 - name: Unzip Sonar
   unarchive:
-    src: '{{ workspace }}/{{ sonar_version_directory }}.zip'
+    src: '{{ sonar_workspace }}/{{ sonar_version_directory }}.zip'
     dest: /usr/local/
     copy: no
     creates: /usr/local/sonar/COPYING
@@ -39,3 +39,5 @@
 
 - name: Make sure Sonar is responding on the configured port.
   wait_for: port=9000 delay=3 timeout=300
+
+- include: checkpr.yml

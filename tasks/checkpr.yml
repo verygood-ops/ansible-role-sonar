@@ -1,0 +1,17 @@
+---
+
+- name: create sonarqube pr trigger user
+  user: name=checkpr
+
+- name: create sonarqube pr trigger script directory
+  file: path=/usr/local/checkpr owner=checkpr mode="u=rwx,go=" state=directory
+
+- name: install sonarqube pr trigger script
+  template: src=checkpr.sh.j2 dest=/usr/local/checkpr/checkpr.sh owner=checkpr mode="u=rwx,go="
+
+- name: adding checkpr to cron
+  cron:
+    name=checkpr
+    user=checkpr
+    job=/usr/local/checkpr/checkpr.sh
+    minute=*/15
