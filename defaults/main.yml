@@ -2,8 +2,18 @@
 workspace: /root
 
 # Default to the latest LTS release.
-sonar_download_url: https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-4.5.6.zip
-sonar_version_directory: sonarqube-4.5.6
+sonar_download_url: https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-5.5.zip
+sonar_version_directory: sonarqube-5.5
+sonar_workspace: /opt
+
+# these variables should be kept in citadel 
+sonar_github_token: "1234aaa"
+sonar_token: "1234aaa"
+
+sonar_url: "https://localhost"
+
+# list of github repositoires
+sonar_repositories:
 
 sonar_db_type: postgresql
 sonar_db_username: sonarqube
@@ -14,8 +24,10 @@ sonar_db_port: "3306"
 sonar_db_name: sonarqube
 
 sonar_plugins:
-  - name: "github"
-    url: "https://sonarsource.bintray.com/Distribution/sonar-github-plugin/sonar-github-plugin-1.2.jar"
+  - name: github
+    url: https://sonarsource.bintray.com/Distribution/sonar-github-plugin/sonar-github-plugin-1.2.jar
+  - name: java
+    url: https://sonarsource.bintray.com/Distribution/sonar-java-plugin/sonar-java-plugin-4.0.jar
 
 sonar_required_packages:
   - unzip
