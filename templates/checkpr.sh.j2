@@ -7,7 +7,7 @@ cd "${BASH_SOURCE%/*}" || exit
 # GITHUB_LOGIN="--hidden--"
 # SONAR_LOGIN="--hidden--"
 
-REPO="{{sonar_repositories}}"
+REPOS="{{sonar_repositories|join(" ")}}"
 GITHUB_LOGIN="{{sonar_github_token}}"
 SONAR_LOGIN="{{sonar_token}}"
 SONAR_URL="{{sonar_url}}"
