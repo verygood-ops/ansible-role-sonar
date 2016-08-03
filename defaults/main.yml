@@ -27,7 +27,7 @@ sonar_plugins:
   - name: github
     url: https://sonarsource.bintray.com/Distribution/sonar-github-plugin/sonar-github-plugin-1.2.jar
   - name: java
-    url: https://sonarsource.bintray.com/Distribution/sonar-java-plugin/sonar-java-plugin-4.0.jar
+    url: http://sonarsource.bintray.com/Distribution/sonar-java-plugin/sonar-java-plugin-3.14.jar
 
 sonar_required_packages:
   - unzip
