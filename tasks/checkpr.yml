@@ -9,6 +9,9 @@
 - name: install sonarqube pr trigger script
   template: src=checkpr.sh.j2 dest=/usr/local/checkpr/checkpr.sh owner=checkpr mode="u=rwx,go="
 
+- name: install .githubrc
+  template: src=githubrc.j2 dest=/home/checkpr/.githubrc owner=checkpr
+
 - name: adding checkpr to cron
   cron:
     name=checkpr
