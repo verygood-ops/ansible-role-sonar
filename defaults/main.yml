@@ -24,6 +24,8 @@ sonar_db_port: "3306"
 sonar_db_name: sonarqube
 
 sonar_plugins:
+  - name: github_auth
+    url: https://sonarsource.bintray.com/Distribution/sonar-auth-github-plugin/sonar-auth-github-plugin-1.1.1.jar
   - name: github
     url: https://sonarsource.bintray.com/Distribution/sonar-github-plugin/sonar-github-plugin-1.2.jar
   - name: java
