@@ -7,6 +7,13 @@ cd "${BASH_SOURCE%/*}" || exit
 # GITHUB_LOGIN="--hidden--"
 # SONAR_LOGIN="--hidden--"
 
+for pid in $(pidof -x checkpr.sh); do
+    if [ $pid != $$ ]; then
+        echo "[$(date)] : checkpr.sh : Process is already running with PID $pid"
+        exit 1
+    fi
+done
+
 REPOS="{{sonar_repositories|join(" ")}}"
 GITHUB_LOGIN="{{sonar_github_token}}"
 SONAR_LOGIN="{{sonar_token}}"
