@@ -12,10 +12,10 @@ sonar_token: "1234aaa"
 sonar_url: "https://localhost"
 
 # list of github repositoires
-sonar_repositories:
+sonar_repositories: "repofoo repobar"
 
 # list of organizations which allowed to login into sonarqube WebUI
-sonar_git_organizations:
+sonar_git_organizations: "orgfoo orgbar"
 
 sonar_db_type: postgresql
 sonar_db_username: sonarqube
