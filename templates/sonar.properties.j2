@@ -1,0 +1,4 @@
+sonar.auth.github.organizations={{ sonar_git_organizations | join(",")}}
+sonar.jdbc.username={{ sonar_db_username }}
+sonar.jdbc.password={{ sonar_db_password }}
+sonar.jdbc.url=jdbc:{{ sonar_db_type }}://{{ sonar_db_host }}:{{ sonar_db_port }}/{{ sonar_db_name }}
