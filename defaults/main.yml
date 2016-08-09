@@ -1,5 +1,4 @@
 ---
-workspace: /root
 
 # Default to the latest LTS release.
 sonar_download_url: https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-5.5.zip
@@ -14,6 +13,9 @@ sonar_url: "https://localhost"
 
 # list of github repositoires
 sonar_repositories:
+
+# list of organizations which allowed to login into sonarqube WebUI
+sonar_git_organizations:
 
 sonar_db_type: postgresql
 sonar_db_username: sonarqube

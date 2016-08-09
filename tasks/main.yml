@@ -22,8 +22,15 @@
     mv /usr/local/{{ sonar_version_directory }} /usr/local/sonar
     creates=/usr/local/sonar/COPYING
 
-- include: configure.yml
-- include: plugins.yml
+- name: Configure SonarQube JDBC settings
+  template: src=sonar.properties.j2 dest=/usr/local/sonar/conf/sonar.properties
+
+- name: Install Sonarqube plugins
+  get_url:
+    url={{ item.url }}
+    dest=/usr/local/sonar/extensions/plugins
+  notify: restart sonar
+  with_items: '{{ sonar_plugins }}'
 
 - name: Add sonar symlinks for service management.
   file:
