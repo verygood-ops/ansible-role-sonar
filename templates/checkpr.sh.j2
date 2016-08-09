@@ -10,6 +10,7 @@ cd "${BASH_SOURCE%/*}" || exit
 for pid in $(pidof -x checkpr.sh); do
     if [ $pid != $$ ]; then
         echo "[$(date)] : checkpr.sh : Process is already running with PID $pid"
+        logger -t CHECKPR "[$(date)]: Process is already running with PID $pid"
         exit 1
     fi
 done
@@ -20,6 +21,8 @@ SONAR_LOGIN="{{sonar_token}}"
 SONAR_URL="{{sonar_url}}"
 
 ROOT_DIR=$PWD
+
+logger -t CHECKPR "[$(date)]: checkpr script started with PID" $(pidof -x checkpr.sh)
 
 for REPO in ${REPOS}
 do
@@ -58,3 +61,5 @@ do
     git branch -D pr-${PRNUM}
   done
 done
+
+logger -t CHECKPR "[$(date)]: checkpr script finished with PID" $(pidof -x checkpr.sh)
