@@ -1,8 +1,6 @@
 # Ansible Role: SonarQube
 
-[![Circle CI](
-https://circleci.com/gh/verygood-ops/ansible-role-sonar.svg?&style=shield&circle-token=d1704c48e28aec330e319e15cdaa70e6b265a4e9
-)](https://circleci.com/gh/verygood-ops/ansible-role-sonar)
+[![CircleCI](https://circleci.com/gh/verygood-ops/ansible-role-sonar.svg?style=svg)](https://circleci.com/gh/verygood-ops/ansible-role-sonar)
 
 An Ansible Role that installs [SonarQube](http://www.sonarqube.org/) on RedHat/CentOS and Debian/Ubuntu Linux servers.
 
