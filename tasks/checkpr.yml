@@ -1,7 +1,7 @@
 ---
 
 - name: create sonarqube pr trigger user
-  user: name=checkpr
+  user: name=checkpr home={{sonar_checkpr_home}}
 
 - name: create sonarqube pr trigger script directory
   file: path=/usr/local/checkpr owner=checkpr mode="u=rwx,go=" state=directory
@@ -10,7 +10,7 @@
   template: src=checkpr.sh.j2 dest=/usr/local/checkpr/checkpr.sh owner=checkpr mode="u=rwx,go="
 
 - name: install .githubrc
-  template: src=githubrc.j2 dest=/home/checkpr/.githubrc owner=checkpr
+  template: src=githubrc.j2 dest={{sonar_checkpr_home}}/.githubrc owner=checkpr
 
 - name: adding checkpr to cron
   cron:
