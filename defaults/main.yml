@@ -42,3 +42,7 @@ sonar_required_packages:
   - git
 
 sonar_checkpr_home: /home/checkpr
+
+# dependencies
+java_packages:
+  - oracle-java8-installer
