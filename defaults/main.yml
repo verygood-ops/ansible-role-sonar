@@ -1,8 +1,9 @@
 ---
 
 # Default to the latest LTS release.
-sonar_download_url: https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-5.5.zip
-sonar_version_directory: sonarqube-5.5
+sonar_version: 5.6
+sonar_download_url: https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-{{sonar_version}}.zip
+sonar_version_directory: sonarqube-{{sonar_version}}
 sonar_workspace: /opt
 
 # these variables should be kept in citadel 
@@ -29,11 +30,11 @@ sonar_plugins:
   - name: git
     url: https://sonarsource.bintray.com/Distribution/sonar-scm-git-plugin/sonar-scm-git-plugin-1.2.jar
   - name: github_auth
-    url: https://sonarsource.bintray.com/Distribution/sonar-auth-github-plugin/sonar-auth-github-plugin-1.1.1.jar
+    url: https://sonarsource.bintray.com/Distribution/sonar-auth-github-plugin/sonar-auth-github-plugin-1.3.jar
   - name: github
-    url: https://sonarsource.bintray.com/Distribution/sonar-github-plugin/sonar-github-plugin-1.2.jar
+    url: https://github.com/verygoodgroup/sonar-github/releases/download/branch-1.3-patchedV1/sonar-github-plugin-1.4-SNAPSHOT.jar
   - name: java
-    url: http://sonarsource.bintray.com/Distribution/sonar-java-plugin/sonar-java-plugin-3.14.jar
+    url: https://sonarsource.bintray.com/Distribution/sonar-java-plugin/sonar-java-plugin-4.2.jar
 
 sonar_required_packages:
   - unzip
@@ -41,3 +42,7 @@ sonar_required_packages:
   - git
 
 sonar_checkpr_home: /home/checkpr
+
+# dependencies
+java_packages:
+  - oracle-java8-installer
