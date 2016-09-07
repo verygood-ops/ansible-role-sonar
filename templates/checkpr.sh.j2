@@ -1,4 +1,5 @@
 #!/bin/bash
+# should be launched unde checkpr user
 
 cd "${BASH_SOURCE%/*}" || exit
 
@@ -14,6 +15,9 @@ for pid in $(pidof -x checkpr.sh); do
         exit 1
     fi
 done
+
+# remove cache older than 1 day
+find ~/.sonar/* -type d -ctime +1 | xargs rm -rf
 
 REPOS="{{sonar_repositories|join(" ")}}"
 GITHUB_LOGIN="{{sonar_github_token}}"
