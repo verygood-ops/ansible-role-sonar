@@ -55,7 +55,8 @@ do
       -Dsonar.github.repository=${REPO_US}/${REPO_NAME} \
       -Dsonar.github.pullRequest=${PRNUM} \
       -Dsonar.login=${SONAR_LOGIN} \
-      -Dsonar.host.url=${SONAR_URL}
+      -Dsonar.host.url=${SONAR_URL} \
+      -Dsonar.github.inlineCommentsDiffOnly=true
 
     git checkout master
     git branch -D pr-${PRNUM}
